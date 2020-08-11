@@ -10,6 +10,9 @@ cor(data1[0:28])
 train1<-data1[1:4000, ]
 test1<-data1[4001:6030, ]
 
+train3<-data3[1:4000, ]
+test3<-data3[4001:6030, ]
+
 # Logistic Regression
 rg_model1 <- glm(DI3_dg ~ ., data =train1, family = "binomial")
 help("glm")
@@ -30,7 +33,7 @@ auc1 <- performance(pr1, measure = "auc")
 auc1 <- auc1@y.values[[1]]
 auc1
 
-# Random Forest
+# Random Forest1
 library(randomForest)
 rf_out1<-randomForest(as.factor(DI3_dg)~.,data=train1, importance=T, mtry=4)
 rf_out1
@@ -43,6 +46,8 @@ rfpred1<-predict(rf_out1,test1)
 
 library (e1071)
 confusionMatrix(as.factor(rfpred1),as.factor(test1$DI3_dg))
+
+
 
 #svm
 m1<-svm(as.factor(DI3_dg)~., data = train1, kernel = "linear")
