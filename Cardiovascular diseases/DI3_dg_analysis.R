@@ -10,7 +10,7 @@ cor(data1[0:28])
 train1<-data1[1:4000, ]
 test1<-data1[4001:6030, ]
 
-# Rogistic Regression
+# Logistic Regression
 rg_model1 <- glm(DI3_dg ~ ., data =train1, family = "binomial")
 help("glm")
 summary(rg_model1)
